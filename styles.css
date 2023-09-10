@@ -1,0 +1,122 @@
+:root {
+    --black-cell: rgb(0, 0, 0);
+    --white-cell: #f5f5f4;
+    --explored-cell-color: #ccbfb3;
+    --neighbour-color: rgb(182, 182, 182);
+    --cell-size: 40px;
+  }
+  
+  body {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    min-height: 100vh;
+    background-color: var(--white-cell);
+    font-family: sans-serif;
+  }
+  
+  #board {
+    border-collapse: separate;
+    outline: 1px solid;
+    border-spacing: 1px;
+    position: relative;
+  }
+  
+  td {
+    background-color: var(--black-cell);
+    position: relative;
+    text-align: center;
+    /* width: var(--cell-size);
+    height: var(--cell-size); */
+  }
+  
+  td,
+  #horse,
+  #carrot {
+    width: 3vw;
+    height: 3vw;
+  }
+  /* css for horse and carrot starts here */
+  #horse,
+  #carrot {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    font-size: 2vw;
+    /* width: var(--cell-size);
+    height: var(--cell-size); */
+  }
+  #horse {
+    z-index: 2;
+  }
+  #carrot {
+    z-index: 1;
+  }
+  /* css for horse and carrot ends here */
+  
+  tr:nth-child(odd) td:nth-child(even),
+  tr:nth-child(even) td:nth-child(odd) {
+    background-color: var(--white-cell);
+  }
+  
+  #board tr td.shortest {
+    background-color: gold;
+  }
+  
+  #board td.neighbour {
+    background-color: var(--neighbour-color);
+  }
+  
+  #board td.hide {
+    opacity: 0.5;
+  }
+  
+  .instruction-box {
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+    outline: 3px solid;
+    height: 100px;
+    width: 300px;
+  }
+  
+  .instruction-box h1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 7px;
+  }
+  
+  #play-btn {
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: clamp(50px, 5vw, 500px);
+    width: clamp(50px, 5vw, 500px);
+    align-self: center;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.4em;
+  }
+  
+  @media screen and (max-width: 600px) {
+    body {
+      padding: 10px;
+      display: block;
+      height: 100vh;
+    }
+    .container {
+      height: 100%;
+    }
+  
+    td,
+    #horse,
+    #carrot {
+      width: var(--cell-size);
+      height: var(--cell-size);
+      font-size: 30px;
+    }
+  }
